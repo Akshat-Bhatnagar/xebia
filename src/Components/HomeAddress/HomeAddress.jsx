@@ -91,7 +91,7 @@ export const HomeAddress = ({ onSubmit }) => {
     setStreetName("");
   };
 
-  const handleManualAddress = () => {
+  const handleManualAddress = async () => {
     let flag = true;
     if (houseNumber === "") setHouseNumberError(true), (flag = false);
     if (subBuilding === "") setSubBuildingError(true), (flag = false);
@@ -116,6 +116,24 @@ export const HomeAddress = ({ onSubmit }) => {
       setSelectedAddress(addr);
       setShowDialogBox(false);
     }
+
+    // const response = await fetch(`http://localhost:3000/users/register`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     houseno: houseNumber,
+    //     buildingno: BuildingName,
+    //     subbuilding: subBuilding,
+    //     street: streetName,
+    //     city: city,
+    //     postalcode: pincode,
+    //     state: state,
+    //     country: country,
+    //   }),
+    // });
+    // console.log(response);
   };
 
   return (

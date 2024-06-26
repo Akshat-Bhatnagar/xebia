@@ -37,7 +37,7 @@ const PersonalDetails = ({ onSubmit }) => {
     return "";
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const nameError = validateNames();
@@ -59,6 +59,20 @@ const PersonalDetails = ({ onSubmit }) => {
       console.log("Form submitted:", form);
       onSubmit();
     }
+
+    const response = await fetch(`http://localhost:3000/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        firstname: form.firstName,
+        middlename: form.middleName,
+        lastname: form.lastName,
+        dob: form.dateOfBirth,
+      }),
+    });
+    console.log(response);
   };
 
   return (
